@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:map_maui="clr-namespace:MAP_MAUI" x:DataType="map_maui:MainPage"
+             x:Class="MAP_MAUI.MainPage">
+
+ <Grid>
+        <Map x:Name="CustomMap1" ItemsSource="{Binding Positions}"  IsShowingUser="True" IsTrafficEnabled="True"
+             MapType="Street" HeightRequest="700" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+              <Map.ItemTemplate>
+                <DataTemplate x:DataType="Pin">
+                    <map_maui:CustomPin Location="{Binding Location}"
+                              Address="{Binding Address}"
+                              Label="{Binding Label}"/>
+                </DataTemplate>
+            </Map.ItemTemplate>
+            </Map>
+     <StackLayout      VerticalOptions="End"
+                HorizontalOptions="Center" Orientation="Horizontal"
+           >
+            <Button
+                x:Name="CounterBtn"
+                Text="Add Pin"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                    Margin="20"/>
+         </StackLayout>
+       </Grid>
+
+</ContentPage>
+
